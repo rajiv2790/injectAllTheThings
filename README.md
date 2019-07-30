@@ -13,6 +13,8 @@ Method                 | 32 bits | 64 bits |  DLL to use                     |
  RtlCreateUserThread() |    +    |    +    | dllmain_32.dll / dllmain_64.dll |
  SetThreadContext()    |    +    |    +    | dllmain_32.dll / dllmain_64.dll |
  Reflective DLL        |    +    |    +    |    rdll_32.dll / rdll_64.dll    |
+ Shellcode via         |    -    |    +    | dllmain_64.dll(not really needed|
+ QueueUserAPC()
 
 ### How to use it
 
@@ -28,6 +30,7 @@ Options:
   5     DLL injection via RtlCreateUserThread()
   6     DLL injection via Code Cave SetThreadContext()
   7     Reflective DLL injection
+  8     Shellcode injection via QueueUserAPC()
 ```
 
 Needless to say, to be on the safe side, always use injectAllTheThings_32.exe to inject into 32 bits processes or injectAllTheThings_64.exe to inject into 64 bits processes. Although, you can also use injectAllTheThings_64.exe to inject into 32 bits processes. And actually, I didn't implement it but I might have to give it a try later, you can go from [WoW64 to 64 bits](http://blog.rewolf.pl/blog/?p=102). Which is basically what Metasploit 'smart_migrate' does. Have a look [here](https://github.com/rapid7/meterpreter/blob/5e24206d510a48db284d5f399a6951cd1b4c754b/source/common/arch/win/i386/base_inject.c).
